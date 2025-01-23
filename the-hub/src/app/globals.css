@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Indie Flower";
+  src: url('../../public/fonts/Indie_Flower/IndieFlower-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Patrick Hand";
+  src: url('../../public/fonts/Patrick_Hand/PatrickHand-Regular.ttf');
+}
+
+:root {
+  --bg: #1A1A1D;
+  --bg2: #3B1C32;
+  --bdr: #3B1C32;
+  --hvr: #6A1E55;
+  --fg: #A64D79;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    145deg,
+    var(--bg2),
+    var(--bg),
+    var(--bg2)
+  );
+}
+
+.textShadow {
+  text-shadow: 2px 2px var(--fg);
+} 
+
+/* Style the entire scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* Style the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: var(--bg); /* Light gray background */
+}
+
+/* Style the scrollbar thumb (scroll handle) */
+::-webkit-scrollbar-thumb {
+  background: var(--bg2); /* Dark gray color */
+  border-radius: 6px; /* Rounded corners */
+  border: 2px solid var(--bdr); /* Adds a border for a more defined thumb */
+}
+
+/* Style the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hvr); /* Darker gray when hovered */
+}
+
+/* Optional: Style the scrollbar corners (only visible if both scrollbars are present) */
+::-webkit-scrollbar-corner {
+  background: var(--bg);
+}

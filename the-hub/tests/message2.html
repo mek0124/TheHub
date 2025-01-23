@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mek's Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg: #1A1D1A;
+            --bg2: #2A2D2A;
+            --bdr: #418C0F;
+            --hvr: #08A0FB;
+            --fg: #F5F5F5;
+            --accent-coral: #FF6F61;
+            --accent-burgundy: #8A2A2A;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(65, 140, 15, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(8, 160, 251, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 111, 97, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(138, 42, 42, 0.15) 0%, transparent 50%);
+            z-index: 0;
+            animation: gradientMove 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                transform: scale(1.1) translate(2%, 2%);
+            }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar {
+            background: rgba(26, 29, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-right: 3px solid var(--bdr);
+            box-shadow: 2px 0 15px rgba(65, 140, 15, 0.2);
+        }
+
+        .nav-button {
+            background: rgba(65, 140, 15, 0.1);
+            color: var(--fg);
+            border: 2px solid var(--bdr);
+            padding: 8px 16px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button:hover {
+            background: var(--hvr);
+            color: var(--bg);
+            border-color: var(--hvr);
+            transform: translateX(5px);
+            box-shadow: -3px 3px 15px rgba(8, 160, 251, 0.3);
+        }
+
+        .content-box {
+            background: rgba(42, 45, 42, 0.8);
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--bdr);
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(65, 140, 15, 0.3);
+            border-color: var(--hvr);
+            background: rgba(42, 45, 42, 0.9);
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-coral), var(--hvr), var(--bdr));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .content-box:hover::before {
+            opacity: 1;
+        }
+
+        .logo {
+            background: linear-gradient(135deg, var(--accent-coral), var(--bdr));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 111, 97, 0.3);
+        }
+
+        .welcome-text {
+            color: var(--fg);
+            text-shadow: 0 0 10px rgba(65, 140, 15, 0.5);
+            font-style: italic;
+        }
+
+        .header-accent {
+            position: relative;
+            display: inline-block;
+        }
+
+        .header-accent::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-coral), var(--bdr));
+        }
+
+        .github-button {
+            background: linear-gradient(45deg, var(--accent-burgundy), var(--bdr));
+            color: var(--fg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .github-button:hover {
+            background: linear-gradient(45deg, var(--bdr), var(--hvr));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(8, 160, 251, 0.4);
+        }
+
+        /* Glow effects */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .glow-1 {
+            top: 20%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: var(--bdr);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .glow-2 {
+            bottom: 20%;
+            right: 10%;
+            width: 250px;
+            height: 250px;
+            background: var(--hvr);
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .glow-3 {
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-coral);
+            animation: float 12s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+
+    <div class="content-wrapper flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="sidebar w-48 p-4 flex flex-col">
+            <div class="mb-8">
+                <h1 class="text-2xl logo">
+                    MEK'S HUB
+                </h1>
+            </div>
+            
+            <nav class="flex-grow">
+                <button class="nav-button">Home</button>
+                <button class="nav-button">Sign up</button>
+                <button class="nav-button">Login</button>
+                <button class="nav-button">About</button>
+                <button class="nav-button">Support</button>
+            </nav>
+            
+            <div class="mt-auto">
+                <button class="github-button w-full">Github Repo</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow p-6">
+            <div class="mb-8">
+                <h2 class="text-3xl welcome-text mb-6">
+                    <span class="header-accent">Welcome To Mek's Hub!</span>
+                </h2>
+                <div class="text-right">
+                    <div class="text-xl text-accent-coral font-semibold">Mek's Hub</div>
+                    <div class="text-sm text-hvr">An application full of other applications...</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6">
+                <div class="content-box">
+                    <p class="italic">Hi! I'm Mek and welcome to my hub!</p>
+                </div>
+                
+                <div class="content-box">
+                    <p class="italic">This "Hub" is a web app full of other web apps for you to enjoy. This project is more of like a "life's work" than anything else.</p>
+                </div>
+                
+                <div class="content-box">
+                    <!-- Empty box -->
+                </div>
+                
+                <div class="content-box">
+                    <!-- Empty box -->
+                </div>
+                
+                <div class="content-box">
+                    <!-- Empty box -->
+                </div>
+                
+                <div class="content-box">
+                    <!-- Empty box -->
+                </div>
+                
+                <div class="content-box col-span-2">
+                    <!-- Wide empty box -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
