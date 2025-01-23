@@ -35,7 +35,7 @@ const NavLink = ({
 
 export default function LoggedOut() {
   return (
-    <div className="flex flex-col items-center justify-start gap-5 w-[20%] h-[900px]">
+    <div className="flex flex-col items-center justify-start gap-5 w-[20%] h-[830px] mt-5 mr-2">
       <NavLink href="/">Home</NavLink>
       <NavLink href="/auth/signup">Sign Up</NavLink>
       <NavLink href="/x">Login</NavLink>
