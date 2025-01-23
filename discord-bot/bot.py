@@ -5,6 +5,7 @@ File stayed the same
 from disnake.ext import commands
 from app.services.json import JsonEngine
 from app.services.db import DbEngine
+from app.services.music_player import MusicPlayer
 from settings import DISCORD_BOT_TOKEN, GUILD_ID, TERMINAL_CHANNEL_ID, ANNOUNCEMENTS_CHANNEL_ID
 
 import disnake
@@ -13,11 +14,24 @@ import importlib
 import inspect
 
 class MyBot(commands.InteractionBot):
-    def __init__(self, json_engine: JsonEngine, db_engine: DbEngine, guild_id: int, term_id: int, ann_id: int, *args, **kwargs):
+    def __init__(
+            self, 
+            json_engine: JsonEngine, 
+            db_engine: DbEngine, 
+            guild_id: int, 
+            term_id: int, 
+            ann_id: int, 
+            music_player: MusicPlayer,
+            *args, 
+            **kwargs
+        ):
+
         super().__init__(**kwargs)
 
         self.json_engine = json_engine
         self.db_engine = db_engine
+        self.music_player = music_player
+        
         self.guild_id = guild_id
         self.term_id = term_id
         self.ann_id = ann_id
@@ -111,6 +125,7 @@ class MyBot(commands.InteractionBot):
 if __name__ == '__main__':
     json_engine = JsonEngine()
     db_engine = DbEngine()
+    music_player = MusicPlayer()
 
     intents = disnake.Intents.all()
 
@@ -120,6 +135,7 @@ if __name__ == '__main__':
         guild_id=GUILD_ID, 
         term_id=TERMINAL_CHANNEL_ID, 
         ann_id=ANNOUNCEMENTS_CHANNEL_ID,
+        music_player = music_player,
         intents=intents
     )
     
