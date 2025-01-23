@@ -72,6 +72,63 @@ class DbEngine:
             results = cur.execute('SELECT id, date, time, user_id, join_date, suggestion, status FROM suggestions').fetchall()
 
             return results
+        
+    def get_open_suggestions(self) -> list:
+        db_file = self.check_exists()
+
+        with sql.connect(db_file) as mdb:
+            cur = mdb.cursor()
+
+            results = cur.execute(
+                'SELECT id, date, time, user_id, join_date, suggestion, status FROM suggestions WHERE status=?',
+                ("open",)
+            ).fetchall()
+        
+            return results
+        
+    def get_closed_suggestions(self) -> list:
+        db_file = self.check_exists()
+
+        with sql.connect(db_file) as mdb:
+            cur = mdb.cursor()
+
+            results = cur.execute(
+                'SELECT id, date, time, user_id, join_date, suggestion, status FROM suggestions WHERE status=?',
+                ("closed",)
+            ).fetchall()
+        
+            return results
+        
+    def close_suggestion(self, _id: str) -> bool:
+        db_file = self.check_exists()
+
+        with sql.connect(db_file) as mdb:
+            cur = mdb.cursor()
+
+            try:
+                cur.execute(
+                    'UPDATE suggestions SET status=? WHERE id=?',
+                    ("closed", _id,)
+                )
+                return True
+            except Exception as e:
+                print(e)
+                raise e
+            
+    def search_suggestion(self, _id: str) -> bool:
+        db_file = self.check_exists()
+
+        with sql.connect(db_file) as mdb:
+            cur = mdb.cursor()
+
+            srch = 'SELECT * FROM suggestions WHERE id=?'
+            val = (_id, )
+
+            try:
+                cur.execute(srch, val).fetchone()
+                return True
+            except Exception as e:
+                return False
 
     """
     Restricted Words Functions
