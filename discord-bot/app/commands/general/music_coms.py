@@ -2,6 +2,11 @@ from disnake.ext import commands
 from collections import deque
 from settings import GUILD_ID, MUSIC_CHANNEL_ID
 
+"""
+Look into how this controls the bot joining/leaving channels.
+if these commands can be condensed into one command based
+off a user action choice, then I'll write it up
+"""
 
 class MusicCommands(commands.Cog):
     def __init__(self, bot):
