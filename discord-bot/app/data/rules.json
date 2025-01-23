@@ -1,0 +1,8 @@
+{
+  "one": "Respect is a must at all times. Being disrespectful to anyone, especially staff, will get you no where with your issues.",
+  "two": "Bot commands are to be used appropriately. Do not spam the chat channels with bot commands, or you will be muted.",
+  "three": "Doxxing is not allowed. Any member caught illegally obtaining publicly identifiable information on another member will be subjected to the same behavior and your information reported to your local police jurisdiction.",
+  "four": "If you see a problem, speak up. All members have the ability to use `/report_member` to create a report using the bots commands which are ONLY seen by Head staff and the Owners. Do not take matters into your own hands.",
+  "five": "All issues pertaining to the MeksHub bot will need to be submitted through the `/bt_report` slash command. At this time, Mek is the only maintainer of the bot and this allows them adequate time to see each issue and handle them appropriately. Any issues that are not submitted through the `/report` command will not be seen or resolved.",
+  "six": "Do not post help with/for the MeksHub bot through the support channels. Mek works a full-time job plus is a full-time college student. See #5 for more info."
+}

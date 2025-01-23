@@ -1,0 +1,56 @@
+{
+  "general": {
+    "hub": {
+      "description": "Returns all The Hub public information",
+      "usage": "`/hub`"
+    },
+    "welcome": {
+      "description": "Welcome a new user to the discord!",
+      "usage": "`/welcome <user_id>`"
+    },
+    "restricted_words": {
+      "description": "Returns a complete list of Restricted Words",
+      "usage": "`/restricted_words`"
+    },
+    "suggest": {
+      "description": "Send a suggestion to the developers! MAX 1024 CHARACTERS",
+      "usage": "`/suggest <your_message_here>`"
+    },
+    "help": {
+      "description": "Returns a paginator embed of the commands available to your highest ranking role.",
+      "usage": "`/help`"
+    }
+  },
+  "mods": {
+    "none": {
+      "description": "There are currently no moderator commands available",
+      "usage": "none"
+    }
+  },
+  "admins": {
+    "ping": {
+      "description": "Test the response time of the bot",
+      "usage": "`/ping`"
+    },
+    "purge": {
+      "description": "Remove n number of message(s) from the channel, or from the user in the channel, the command is executed in. USER AND AMOUNT ARE OPTIONAL! BE CAREFUL WITH THIS COMMAND!",
+      "usage": "`/purge <user> <amount> <reason>`"
+    }
+  },
+  "devs": {
+    "get_suggestions": {
+      "description": "Displays a paginator embed of all currently open suggestions",
+      "usage": "`/get_suggestions`"
+    }
+  },
+  "owner": {
+    "restart": {
+      "description": "Allows the Owners to restart the Mek's Hub discord bot",
+      "usage": "`/restart <reason>`"
+    },
+    "restricted_words": {
+      "description": "Allows staff to add/remove words to the Restricted Words list.",
+      "usage": "`/restricted_words <add/remove> <word> <reason>"
+    }
+  }
+}
