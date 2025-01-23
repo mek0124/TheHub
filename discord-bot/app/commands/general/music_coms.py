@@ -4,9 +4,8 @@ from settings import GUILD_ID, MUSIC_CHANNEL_ID
 
 
 class MusicCommands(commands.Cog):
-    def __init__(self, bot, music_player):
+    def __init__(self, bot):
         self.bot = bot
-        self.music_player = music_player
         self.song_que = deque()
         self.currently_playing = False
 
@@ -69,8 +68,8 @@ class MusicCommands(commands.Cog):
             next_song = self.song_que.popleft()
 
             await inter.followup.send(f"Now Playing: {next_song}")
-            await self.music_player.play_song(inter, next_song)
-            await self.music_player.wait_for_song_end()
+            await self.bot.music_player.play_song(inter, next_song)
+            await self.bot.music_player.wait_for_song_end()
             await self._play_next_song()
 
     @commands.slash_command(
@@ -87,4 +86,4 @@ class MusicCommands(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(MusicCommands(bot, bot.music_player))
+    bot.add_cog(MusicCommands(bot))
