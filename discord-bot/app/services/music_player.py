@@ -14,10 +14,22 @@ class MusicPlayer:
         self.ytdl = yt_dlp.YoutubeDL(self.ytdl_opts)
 
     async def play_song(self, ctx, url):
+        """
+        func: play_song
+
+        :Params:
+            ctx -> often referred to as inter or interaction
+            url -> the string input of the youtube url you want to play
+        """
+
+        # chek if voice_cliens is None
         if not self.voice_client:
+            # if it is, then check if the ctx.author has voice abilities
             if ctx.author.voice:
+                # if so, set the voice_client equal to the interaction (ctx) joining the channel and relaying the music
                 self.voice_client = await ctx.author.voice.channel.connect()
             else:
+                # otherwise
                 await ctx.send("You need to be in a voice channel!")
                 return
 
