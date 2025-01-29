@@ -205,6 +205,24 @@ class DbEngine:
                 raise e
 
     """
+    Music playlist functions
+    """
+    def get_playlists(self, user_id: int) -> list:
+        db_file = self.check_exists()
+
+        with sql.connect(db_file) as mdb:
+            cur = mdb.cursor()
+
+            srch = 'SELECT playlist_name FROM playlists WHERE id=?'
+            val = (user_id, )
+
+            try:
+                results = cur.execute(srch, val).fetchall()
+                return results
+            except Exception as e:
+                raise e
+
+    """
     Universal Functions
     """
     def check_exists(self):
@@ -266,6 +284,16 @@ class DbEngine:
                         id TEXT NOT NULL PRIMARY KEY,
                         word TEXT NOT NULL,
                         UNIQUE(word)
+                    )
+                    '''
+                )
+
+                cur.execute(
+                    '''
+                    CREATE TABLE IF NOT EXISTS playlists(
+                        id INTEGER NOT NULL PRIMARY KEY,
+                        playlist_name TEXT NOT NULL,
+                        url TEXT NOT NULL
                     )
                     '''
                 )
