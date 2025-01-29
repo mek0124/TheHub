@@ -1,6 +1,7 @@
 from disnake.ext import commands
 from collections import deque
 from settings import GUILD_ID, MUSIC_CHANNEL_ID
+from thefuzz import process
 
 
 class MusicCommands(commands.Cog):
@@ -11,7 +12,7 @@ class MusicCommands(commands.Cog):
 
     @commands.slash_command(
         name = "music",
-        description = "Play/Stop Music || Leave/Join Bot To VC",
+        description = "Allows a member to control the music portion of The Hub's bot",
         guild_ids = [GUILD_ID]
     )
     @commands.has_any_role('member')
@@ -90,6 +91,7 @@ class MusicCommands(commands.Cog):
     async def autocomplete(self, inter, action: str) -> str:
         actions = ["join", "leave", "play", "stop"]
         return [action for action in actions]
+
 
 def setup(bot):
     bot.add_cog(MusicCommands(bot))
